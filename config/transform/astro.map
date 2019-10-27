@@ -1,0 +1,46 @@
+//
+ARIES=♈ Areis
+TAURUS=♉ Taurus
+GEMINI=♊ Gemini
+CANCER=♋ Cancer
+LEO=♌ Leo
+VIRGO=♍ Virgo
+LIBRA=♎ Libra
+SCORPIO=♏ Scorpio
+SAGITTARIUS=♐ Sagittarius
+CAPRICORN=♑ Capricorn
+AQUARIUS=♒ Aquarius
+PISCES=♓ Pisces
+
+//
+SPRING=Spring
+SUMMER=Summer
+AUTUMN=Autumn
+WINTER=Winter
+
+//
+SUN_RISE=Sunrise
+ASTRO_DAWN=Astro Dawn
+NAUTIC_DAWN=Nautical Dawn
+CIVIL_DAWN=Civil Dawn
+CIVIL_DUSK=Civil Dusk
+NAUTIC_DUSK=Nautical Dusk
+ASTRO_DUSK=Astro Dusk
+SUN_SET=Sunset
+DAYLIGHT=Daylight
+NOON=Noon
+NIGHT=Night
+
+//
+NEW=🌑 New
+WAXING_CRESCENT=🌑→🌓 Waxing Crescent
+FIRST_QUARTER=🌓 First Quarter
+WAXING_GIBBOUS=🌓→🌕 Waxing Gibbous
+FULL=🌕 Full
+WANING_GIBBOUS=🌕→🌗 Waning Gibbous
+THIRD_QUARTER=🌗 Third Quarter
+WANING_CRESCENT=🌗→🌑 Waning Crescent
+
+//
+NULL=Unknown ⁉
+-=Unknown ⁉

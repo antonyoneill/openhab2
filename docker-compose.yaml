@@ -1,0 +1,27 @@
+---
+version: '2.2'
+
+services:
+  openhab:
+    image: "openhab/openhab:2.3.0"
+    restart: always
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "./addons:/openhab/addons"
+      - "./config:/openhab/conf"
+      - "./userdata:/openhab/userdata"
+      - "./cont-init.d:/etc/cont-init.d"
+    env_file: uidgid.env
+    environment:
+      OPENHAB_HTTP_PORT: "8080"
+      OPENHAB_HTTPS_PORT: "8443"
+      EXTRA_JAVA_OPTS: "-Duser.timezone=Europe/Berlin -Dgnu.io.rxtx.SerialPorts=/dev/ttyAMA0:/dev/ttyS0:/dev/serial0:/dev/serial1"
+      USER_ID: 1001
+      GROUP_ID: 1001
+    devices:
+        - /dev/ttyAMA0
+    ports:
+      - 8081:8080
+      - 9001
+

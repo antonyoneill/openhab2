@@ -1,0 +1,9 @@
+Number LivingRoom_Heating_Temperature "Temperature Living Room [%.1f C]" <temperature> {neohub="Living Room:CurrentTemperature"}
+Number Bedroom_Heating_Temperature "Bedroom Temperature [%.1f C]" <temperature> {neohub="Master Bedroom:CurrentTemperature"}
+Number Hallway_Heating_Temperature "Hallway/Bathroom Temperature [%.1f C]" <temperature> {neohub="Hallway & Bathroom:CurrentTemperature"}
+Number SpareBedroom_Heating_Temperature "Spare Bedroom Temperature [%.1f C]" <temperature> {neohub="Spare Room:CurrentTemperature"}
+
+Switch LivingRoom_Heating_Firing "Living Room Heating" <fire> {neohub="Living Room:Heating"}
+Switch Bedroom_Heating_Firing "Bedroom Heating" <fire> {neohub="Master Bedroom:Heating"}
+Switch Hallway_Heating_Firing "Hallway/Bathroom Heating" <fire> {neohub="Hallway & Bathroom:Heating"}
+Switch SpareBedroom_Heating_Firing "Spare Bedroom Heating" <fire> {neohub="Spare Room:Heating"}

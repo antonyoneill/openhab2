@@ -1,0 +1,19 @@
+rule "Front Room Lighting Link"
+when
+	Item FrontRoom_Dual_Light received command
+then
+	var int set = receivedCommand as DecimalType
+	zwave_device_16775ecf659_node3_switch_dimmer1.sendCommand(set)
+	zwave_device_16775ecf659_node4_switch_dimmer1.sendCommand(set)
+end
+
+rule "lights"
+when
+	Item Lights received command OFF
+then
+	logInfo('misc.rules', 'switching off all lights')
+	Lights.members.forEach[L |
+		logInfo('misc.rules', 'switching off light')
+		L.sendCommand(0)
+	]
+end

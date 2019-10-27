@@ -1,0 +1,8 @@
+Group WakeUpAlarm "Wake Up Alarm"
+Number WakeUpHour           "Wake up hour [%d]" <clock> (WakeUpAlarm)
+Number WakeUpMinute         "Wake up minute [%d]" <clock> (WakeUpAlarm)
+Number WakeUpDimStep        "Wake up Dim Step [%d]" <light> (WakeUpAlarm)
+Number WakeUpTimeStep       "Wake up Time Step [%d]" <clock> (WakeUpAlarm)
+Switch WakeUpAlarmSwitch    "Wake up alarm [%s]" (WakeUpAlarm)
+Switch WakeUpAlarmTriggered "Wake up alarm triggered [%s]"  <alarm> (WakeUpAlarm)
+

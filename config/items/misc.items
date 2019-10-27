@@ -1,0 +1,2 @@
+Number FrontRoom_Dual_Light "All" <light> {autoupdate="false"}
+Group:Switch:MAX Lights "All Lights"
