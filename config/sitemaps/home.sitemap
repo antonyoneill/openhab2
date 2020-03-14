@@ -1,80 +1,80 @@
 sitemap home label="Our Home" {
-Frame label="" {
-Text item=Current_DateTime label="Weather and Astro [%1$tA, %1$td.%1$tm.%1$tY]" icon="sun_clouds" {
-            Frame label="Now" {
-                //Switch item=Night_State label="Phase of Day" mappings=[OFF="Tag", ON="Nacht"]
-                Text item=Day_Phase icon="sunmoon"
-                Text item=Sunrise_Time icon="sunrise" visibility=[Night_State == ON]
-                Text item=Sunset_Time icon="sunset" visibility=[Night_State == OFF]
-                Text item=Sun_Elevation icon="sunmoon" visibility=[Sun_Elevation > 0]
-                Text item=Moon_Elevation icon="sunmoon" visibility=[Moon_Elevation > 0]
-                Text item=Zodiac_Sign icon="zodiac"
-                Text item=Moon_Phase
-                Text item=Moon_Next_Full icon="fullmoon"
-                    visibility=[Moon_Phase == WAXING_CRESCENT,
-                        Moon_Phase == FIRST_QUARTER,
-                        Moon_Phase == WAXING_GIBBOUS,
-                        Moon_Phase == FULL]
-                Text item=Moon_Next_New icon="fullmoon"
-                    visibility=[Moon_Phase == WANING_GIBBOUS,
-                        Moon_Phase == THIRD_QUARTER,
-                        Moon_Phase == WANING_CRESCENT,
-                        Moon_Phase == NEW]
-            }
-            Frame label="Forecast" {
-                Text label="This is part of other tutorials..." icon="sun_clouds"
-            }
-        }
-}
-Frame label="Lounge Lights" {
-			Switch item=FrontRoom_Dual_Light mappings=[0="Off", 1="V Low", 20="Low", 50="Mid", 100="High"]
-			Switch icon="light"item=zwave_device_16775ecf659_node3_switch_dimmer1 mappings=[0="Off", 1="V Low", 20="Low", 50="Mid", 100="High"]
-			Switch icon="light" item=zwave_device_16775ecf659_node4_switch_dimmer1 mappings=[0="Off", 1="V Low", 20="Low", 50="Mid", 100="High"]
-}
-Frame label="Bedroom Lights" {
-			Switch item=Bedroom_MainLight icon="light" mappings=[0="Off", 5="V Low", 20="Low", 64="Mid", 100="High"]
-}
-Frame label="All lights" visibility=[Lights==ON] {
-  Switch item=Lights visibility=[Lights==ON]
-}
-Frame label="Rooms" {
-	Text label="Front Room" icon="sofa" {
-		Frame label="Lights" {
-			Switch item=FrontRoom_Dual_Light mappings=[0="Off", 1="V Low", 20="Low", 50="Mid", 100="High"]
-			Switch item=zwave_device_16775ecf659_node3_switch_dimmer1 mappings=[0="Off", 1="V Low", 20="Low", 50="Mid", 100="High"]
-			Switch item=zwave_device_16775ecf659_node4_switch_dimmer1 mappings=[0="Off", 1="V Low", 20="Low", 50="Mid", 100="High"]
-		}
-		Frame label="Heat" {
-			Text item=LivingRoom_Heating_Temperature
-			Switch item=LivingRoom_Heating_Firing
-		}
-	}
-	Text label="Hallway & Bathroom" icon="bath" {
-		Frame label="Heat" {
-			Text item=Hallway_Heating_Temperature
-			Switch item=Hallway_Heating_Firing
-		}
-	}
-	Text label="Master Bedroom" icon="bedroom" {
-		Frame label="Lights" {
-			Switch item=Bedroom_MainLight icon="light" mappings=[0="Off", 1="V Low", 20="Low", 50="Mid", 100="High"]
-			Group icon="clock" item=WakeUpAlarm {
-			       Setpoint item=WakeUpHour minValue=0 maxValue=23 step=1
-			       Setpoint item=WakeUpMinute minValue=0 maxValue=59 step=1
-			       Setpoint item=WakeUpDimStep minValue=1 maxValue=100 step=1
-			       Setpoint item=WakeUpTimeStep minValue=1 maxValue=60 step=1
-			       Switch item=WakeUpAlarmSwitch
-			       Text item=WakeUpAlarmTriggered
-			}
-		}
-		Frame label="Heat" {
-			Text item=Bedroom_Heating_Temperature
-			Switch item=Bedroom_Heating_Firing
-		}
-	}
-	Text label="Spare Bedroom" icon="suitcase"{
-		Text item=SpareBedroom_Heating_Temperature
-		Switch item=SpareBedroom_Heating_Firing
-	}
-}
+  Frame label="" {
+    Text item=Current_DateTime label="Weather and Astro [%1$tA, %1$td.%1$tm.%1$tY]" icon="sun_clouds" {
+      Frame label="Now" {
+        //Switch item=Night_State label="Phase of Day" mappings=[OFF="Tag", ON="Nacht"]
+        Text item=Day_Phase icon="sunmoon"
+          Text item=Sunrise_Time icon="sunrise" visibility=[Night_State == ON]
+          Text item=Sunset_Time icon="sunset" visibility=[Night_State == OFF]
+          Text item=Sun_Elevation icon="sunmoon" visibility=[Sun_Elevation > 0]
+          Text item=Moon_Elevation icon="sunmoon" visibility=[Moon_Elevation > 0]
+          Text item=Zodiac_Sign icon="zodiac"
+          Text item=Moon_Phase
+          Text item=Moon_Next_Full icon="fullmoon"
+          visibility=[Moon_Phase == WAXING_CRESCENT,
+          Moon_Phase == FIRST_QUARTER,
+          Moon_Phase == WAXING_GIBBOUS,
+          Moon_Phase == FULL]
+            Text item=Moon_Next_New icon="fullmoon"
+            visibility=[Moon_Phase == WANING_GIBBOUS,
+          Moon_Phase == THIRD_QUARTER,
+          Moon_Phase == WANING_CRESCENT,
+          Moon_Phase == NEW]
+      }
+      Frame label="Forecast" {
+        Text label="This is part of other tutorials..." icon="sun_clouds"
+      }
+    }
+  }
+  Frame label="Lounge Lights" {
+    Switch item=FrontRoom_Dual_Light mappings=[0="Off", 1="V Low", 20="Low", 50="Mid", 100="High"]
+      Switch icon="light"item=zwave_device_16775ecf659_node3_switch_dimmer1 mappings=[0="Off", 1="V Low", 20="Low", 50="Mid", 100="High"]
+      Switch icon="light" item=zwave_device_16775ecf659_node4_switch_dimmer1 mappings=[0="Off", 1="V Low", 20="Low", 50="Mid", 100="High"]
+  }
+  Frame label="Bedroom Lights" {
+    Switch item=Bedroom_MainLight icon="light" mappings=[0="Off", 5="V Low", 20="Low", 64="Mid", 100="High"]
+  }
+  Frame label="All lights" visibility=[Lights==ON] {
+    Switch item=Lights visibility=[Lights==ON]
+  }
+  Frame label="Rooms" {
+    Text label="Front Room" icon="sofa" {
+      Frame label="Lights" {
+        Switch item=FrontRoom_Dual_Light mappings=[0="Off", 1="V Low", 20="Low", 50="Mid", 100="High"]
+          Switch item=zwave_device_16775ecf659_node3_switch_dimmer1 mappings=[0="Off", 1="V Low", 20="Low", 50="Mid", 100="High"]
+          Switch item=zwave_device_16775ecf659_node4_switch_dimmer1 mappings=[0="Off", 1="V Low", 20="Low", 50="Mid", 100="High"]
+      }
+      Frame label="Heat" {
+        Text item=LivingRoom_Heating_Temperature
+          Switch item=LivingRoom_Heating_Firing
+      }
+    }
+    Text label="Hallway & Bathroom" icon="bath" {
+      Frame label="Heat" {
+        Text item=Hallway_Heating_Temperature
+          Switch item=Hallway_Heating_Firing
+      }
+    }
+    Text label="Master Bedroom" icon="bedroom" {
+      Frame label="Lights" {
+        Switch item=Bedroom_MainLight icon="light" mappings=[0="Off", 1="V Low", 20="Low", 50="Mid", 100="High"]
+          Group icon="clock" item=WakeUpAlarm {
+            Setpoint item=WakeUpHour minValue=0 maxValue=23 step=1
+              Setpoint item=WakeUpMinute minValue=0 maxValue=59 step=1
+              Setpoint item=WakeUpDimStep minValue=1 maxValue=100 step=1
+              Setpoint item=WakeUpTimeStep minValue=1 maxValue=60 step=1
+              Switch item=WakeUpAlarmSwitch
+              Text item=WakeUpAlarmTriggered
+          }
+      }
+      Frame label="Heat" {
+        Text item=Bedroom_Heating_Temperature
+          Switch item=Bedroom_Heating_Firing
+      }
+    }
+    Text label="Spare Bedroom" icon="suitcase"{
+      Text item=SpareBedroom_Heating_Temperature
+        Switch item=SpareBedroom_Heating_Firing
+    }
+  }
 }
