@@ -88,7 +88,7 @@ then
                                    mDimmerTimer.reschedule(now.plusMinutes(mTimeStep))
                                } 
                                // Enter your dimmer name here
-                               Bedroom_MainLight.sendCommand(mCurrentDimLevel)
+                               BedroomLight_Rules.sendCommand(mCurrentDimLevel)
                                if (mCurrentDimLevel == 50) {
                                    WakeUpAlarmSwitch.sendCommand(OFF)
                                }

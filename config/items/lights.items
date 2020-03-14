@@ -1,0 +1,24 @@
+Group:Switch:MAX Lights "All Lights"
+Group Proxy
+
+Group Lights_Proxy
+Group Lights_UI
+Group Lights_Rules
+
+Group KitchenLight
+Group LoungeLight
+Group BedroomLight
+
+Dimmer KitchenLight_Proxy (Lights, Proxy, KitchenLight, Lights_Proxy)
+Dimmer KitchenLight_UI "Kitchen [%d%%]" (Proxy, KitchenLight, Lights_UI)
+Dimmer KitchenLight_Rules (Proxy, KitchenLight, Lights_Rules)
+
+Dimmer LoungeLight_Proxy (Lights, Proxy, LoungeLight, Lights_Proxy)
+Dimmer LoungeLight_UI "Lounge [%d%%]" (Proxy, LoungeLight, Lights_UI)
+Dimmer LoungeLight_Rules (Proxy, LoungeLight, Lights_Rules)
+
+Dimmer BedroomLight_Proxy (Lights, Proxy, BedroomLight, Lights_Proxy)
+Dimmer BedroomLight_UI "Bedroom [%d%%]" (Proxy, BedroomLight, Lights_UI)
+Dimmer BedroomLight_Rules (Proxy, BedroomLight, Lights_Rules)
+
+Number FrontRoom_Dual_Light "All" <light> {autoupdate="false"}

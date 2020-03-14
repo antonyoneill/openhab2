@@ -1,0 +1,55 @@
+rule "Light control received command"
+when
+  Member of Proxy received command
+then
+  val triggeringItemSplit = triggeringItem.name.split("_")
+  var brightness = receivedCommand
+
+  val lightName = triggeringItemSplit.get(0)
+  val source = triggeringItemSplit.get(1)
+
+  if (source == "Proxy") {
+    return;
+  }
+
+  val proxy = Proxy.members.findFirst[ p | p.name == lightName + "_Proxy" ]
+  val device = Proxy.members.findFirst[  p | p.name == lightName + "_Device" ]
+  val ui = Proxy.members.findFirst[  p | p.name == lightName + "_UI" ]
+  val rules = Proxy.members.findFirst[  p | p.name == lightName + "_Rules" ]
+
+  if (source == "Device") {
+    Thread::sleep(50)
+    if (brightness == proxy.state) {
+      return;
+    }
+  }
+
+
+  logDebug("Proxy", "Aiming for " + brightness + ". Currently: \n" + proxy + "\n" + device + "\n" + ui + "\n" + rules)
+
+  logInfo("Proxy", "It was " + source + " for light " + lightName + " to " + brightness)
+
+  if (proxy.state != brightness) proxy.sendCommand(brightness)
+  if (device.state != brightness) device.sendCommand(brightness)
+  if (ui.state != brightness) ui.sendCommand(brightness)
+  if (rules.state != brightness) rules.sendCommand(brightness)
+
+end
+
+rule "Front Room Lighting Link"
+when
+	Item FrontRoom_Dual_Light received command
+then
+	var int set = receivedCommand as DecimalType
+	KitchenLight_Rules.sendCommand(set)
+	LoungeLight_Rules.sendCommand(set)
+end
+
+rule "All Lights"
+when
+	Item Lights received command OFF
+then
+	Lights_Rules.members.forEach[L |
+		L.sendCommand(0)
+	]
+end
