@@ -21,7 +21,17 @@ services:
       GROUP_ID: 1001
     devices:
         - /dev/ttyAMA0
-    ports:
-      - 8081:8080
-      - 9001
+    networks:
+      - home
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.openhab.tls=true"
+      - "traefik.http.routers.openhab.entrypoints=websecure"
+      - "traefik.http.routers.openhab.middlewares=auth@file"
+      - "traefik.http.routers.openhab.rule=Host(`openhab.home.alhome.uk`)"
+      - "traefik.http.services.openhab.loadbalancer.server.port=8080"
 
+networks:
+  home:
+    external:
+      name: home
