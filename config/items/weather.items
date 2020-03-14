@@ -1,0 +1,4 @@
+Group Weather
+
+Number Temperature "Temperature [%.2f C]" (Weather) {weather="locationId=home, type=temperature, property=current"}
+
