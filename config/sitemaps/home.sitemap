@@ -77,4 +77,7 @@ sitemap home label="Our Home" {
         Switch item=SpareBedroom_Heating_Firing
     }
   }
+  Frame label="Time of Day"  {
+   Group item=time_of_day label="Time of Day" icon="clock" 
+  }
 }

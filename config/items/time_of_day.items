@@ -1,0 +1,17 @@
+Group time_of_day
+
+String vTimeOfDay "Current Time of Day [MAP(time_of_day.map):%s]" <tod> (time_of_day)
+
+DateTime vMorning_Time "Dusk [%1$tH:%1$tM]" <sunrise> (time_of_day)
+
+DateTime vSunrise_Time "Morning [%1$tH:%1$tM]" <sun> (time_of_day) { channel="astro:sun:home:rise#start" }
+
+DateTime vAfternoon_Time "Afternoon [ %1$tH:%1$tM]" <sun> (time_of_day) { channel="astro:sun:home:noon#start" }
+
+DateTime vSunset_Time "Evening [%1$tH:%1$tM]" <sunset> (time_of_day) { channel="astro:sun:home:set#start" }
+    
+DateTime vNight_Time "Night [%1$tH:%1$tM]" <moon> (time_of_day)
+  
+DateTime vBed_Time "Bed [%1$tH:%1$tM]" <bedroom_blue> (time_of_day)
+
+
