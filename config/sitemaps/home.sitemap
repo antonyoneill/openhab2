@@ -30,6 +30,7 @@ sitemap home label="Our Home" {
     Switch item=FrontRoom_Dual_Light mappings=[0="Off", 1="V Low", 20="Low", 50="Mid", 100="High"]
       Switch icon="light" item=KitchenLight_UI mappings=[0="Off", 1="V Low", 20="Low", 50="Mid", 100="High"]
       Switch icon="light" item=LoungeLight_UI mappings=[0="Off", 1="V Low", 20="Low", 50="Mid", 100="High"]
+      Switch item=Lounge_Lamp
   }
   Frame label="Bedroom Lights" {
     Switch item=BedroomLight_UI icon="light" mappings=[0="Off", 5="V Low", 20="Low", 64="Mid", 100="High"]
@@ -43,6 +44,7 @@ sitemap home label="Our Home" {
         Switch item=FrontRoom_Dual_Light mappings=[0="Off", 1="V Low", 20="Low", 50="Mid", 100="High"]
           Switch item=KitchenLight_UI mappings=[0="Off", 1="V Low", 20="Low", 50="Mid", 100="High"]
           Switch item=LoungeLight_UI mappings=[0="Off", 1="V Low", 20="Low", 50="Mid", 100="High"]
+          Switch item=Lounge_Lamp
       }
       Frame label="Heat" {
         Text item=LivingRoom_Heating_Temperature
@@ -78,15 +80,15 @@ sitemap home label="Our Home" {
     }
   }
   Frame label="Time of Day"  {
-   Group item=time_of_day label="Time of Day" icon="clock" 
+    Group item=time_of_day label="Time of Day" icon="clock" 
   }
   Frame label="Weather" {
     Text item=Temperature
   }
   Frame label="Debug" {
     Group item=Lights
-    Group item=KitchenLight
-    Group item=LoungeLight
-    Group item=BedroomLight
+      Group item=KitchenLight
+      Group item=LoungeLight
+      Group item=BedroomLight
   }
 }

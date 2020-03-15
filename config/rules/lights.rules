@@ -84,9 +84,9 @@ end
 
 rule "All Lights"
 when
-	Item Lights received command OFF
+	Item AllLights received command OFF
 then
-	Lights_Rules.members.forEach[L |
+	AllLights_Rules.members.forEach[L |
 		L.sendCommand(0)
 	]
 end

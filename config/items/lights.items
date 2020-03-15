@@ -1,5 +1,5 @@
-Group:Switch:MAX Lights "All Lights"
-
+Group:Switch:MAX AllLights "All Lights"
+Group Lights "Lights"
 Group Light_Proxy_Sync "Light Proxy Sync"
 
 Group Lights_Proxy "Light Proxies" (Lights)
@@ -11,16 +11,16 @@ Group KitchenLight "Kitchen Light"
 Group LoungeLight "Lounge Light"
 Group BedroomLight "Bedroom Light"
 
-Dimmer KitchenLight_Proxy (KitchenLight, Lights_Proxy, Light_Proxy_Sync)
-Dimmer KitchenLight_UI "Kitchen [%d%%]" (KitchenLight, Lights_UI, Light_Proxy_Sync)
-Dimmer KitchenLight_Rules (KitchenLight, Lights_Rules, Light_Proxy_Sync)
+Dimmer KitchenLight_Proxy               (Light_Proxy_Sync, KitchenLight, Lights_Proxy)
+Dimmer KitchenLight_UI "Kitchen [%d%%]" (Light_Proxy_Sync, KitchenLight, Lights_UI)
+Dimmer KitchenLight_Rules               (Light_Proxy_Sync, KitchenLight, Lights_Rules, AllLights)
 
-Dimmer LoungeLight_Proxy (LoungeLight, Lights_Proxy, Light_Proxy_Sync)
-Dimmer LoungeLight_UI "Lounge [%d%%]" (LoungeLight, Lights_UI, Light_Proxy_Sync)
-Dimmer LoungeLight_Rules (LoungeLight, Lights_Rules, Light_Proxy_Sync)
+Dimmer LoungeLight_Proxy              (Light_Proxy_Sync, LoungeLight, Lights_Proxy)
+Dimmer LoungeLight_UI "Lounge [%d%%]" (Light_Proxy_Sync, LoungeLight, Lights_UI)
+Dimmer LoungeLight_Rules              (Light_Proxy_Sync, LoungeLight, Lights_Rules, AllLights)
 
-Dimmer BedroomLight_Proxy (BedroomLight, Lights_Proxy, Light_Proxy_Sync)
-Dimmer BedroomLight_UI "Bedroom [%d%%]" (BedroomLight, Lights_UI, Light_Proxy_Sync)
-Dimmer BedroomLight_Rules (BedroomLight, Lights_Rules, Light_Proxy_Sync)
+Dimmer BedroomLight_Proxy               (Light_Proxy_Sync, BedroomLight, Lights_Proxy)
+Dimmer BedroomLight_UI "Bedroom [%d%%]" (Light_Proxy_Sync, BedroomLight, Lights_UI)
+Dimmer BedroomLight_Rules               (Light_Proxy_Sync, BedroomLight, Lights_Rules, AllLights)
 
 Number FrontRoom_Dual_Light "All" <light> {autoupdate="false"}
