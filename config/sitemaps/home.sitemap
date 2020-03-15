@@ -83,4 +83,10 @@ sitemap home label="Our Home" {
   Frame label="Weather" {
     Text item=Temperature
   }
+  Frame label="Debug" {
+    Group item=Lights
+    Group item=KitchenLight
+    Group item=LoungeLight
+    Group item=BedroomLight
+  }
 }

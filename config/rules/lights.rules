@@ -1,6 +1,6 @@
-rule "Light control received command"
+rule "Lights items received command"
 when
-  Member of Proxy received command
+  Member of Light_Proxy_Sync received command
 then
   val triggeringItemSplit = triggeringItem.name.split("_")
   var brightness = receivedCommand
@@ -12,28 +12,60 @@ then
     return;
   }
 
-  val proxy = Proxy.members.findFirst[ p | p.name == lightName + "_Proxy" ]
-  val device = Proxy.members.findFirst[  p | p.name == lightName + "_Device" ]
-  val ui = Proxy.members.findFirst[  p | p.name == lightName + "_UI" ]
-  val rules = Proxy.members.findFirst[  p | p.name == lightName + "_Rules" ]
+  val proxy = Lights.allMembers.findFirst[ p | p.name == lightName + "_Proxy" ]
+  val device = Lights.allMembers.findFirst[  p | p.name == lightName + "_Device" ]
+  val ui = Lights.allMembers.findFirst[  p | p.name == lightName + "_UI" ]
+  val rules = Lights.allMembers.findFirst[  p | p.name == lightName + "_Rules" ]
+
+  logInfo("Lights", "Triggered by " + triggeringItem +
+    "\nAiming for " + brightness +
+    "\nCurrently: " + 
+    "\nProxy:  " + proxy.state + 
+    "\nDevice: " + device.state + 
+    "\nUI:     " + ui.state +
+    "\nRules:  " + rules.state)
 
   if (source == "Device") {
     Thread::sleep(50)
     if (brightness == proxy.state) {
       return;
     }
+    if (brightness != 0) {
+      brightness = 66;
+  }
+    logInfo("Lights", "Got a device command: " + brightness)
   }
 
 
-  logDebug("Proxy", "Aiming for " + brightness + ". Currently: \n" + proxy + "\n" + device + "\n" + ui + "\n" + rules)
 
-  logInfo("Proxy", "It was " + source + " for light " + lightName + " to " + brightness)
+  logInfo("Lights", "It was " + source + " for light " + lightName + " to " + brightness)
 
-  if (proxy.state != brightness) proxy.sendCommand(brightness)
-  if (device.state != brightness) device.sendCommand(brightness)
-  if (ui.state != brightness) ui.sendCommand(brightness)
-  if (rules.state != brightness) rules.sendCommand(brightness)
+  if (proxy.state != brightness) proxy.sendCommand(brightness as Number)
+  if (device.state != brightness) device.sendCommand(brightness as Number)
+  if (ui.state != brightness) ui.sendCommand(brightness as Number)
+  if (rules.state != brightness) rules.sendCommand(brightness as Number)
+end
 
+rule "Lights_Device deviating from the Lights_Proxy emit a command"
+when
+  Member of Lights_Device changed
+then
+  val device = triggeringItem
+  val lightName = device.name.split("_").get(0)
+
+  logInfo("Lights", "Light " + lightName + " changed.")
+  val proxy = Lights.allMembers.findFirst[ p | p.name == lightName + "_Proxy" ]
+
+  logInfo("Lights", "Device State " + device.state)
+  logInfo("Lights", "Lights  State " + proxy.state)
+
+  if (device.state == proxy.state) {
+    return;
+  }
+
+  logInfo("Lights", "Emitting command for device to set brightness to " + triggeringItem.state)
+
+  triggeringItem.sendCommand(triggeringItem.state as Number)
 end
 
 rule "Front Room Lighting Link"
