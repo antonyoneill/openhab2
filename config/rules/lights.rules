@@ -5,6 +5,12 @@ then
   val triggeringItemSplit = triggeringItem.name.split("_")
   var brightness = receivedCommand
 
+  if (brightness == "ON") {
+    brightness = 100
+  } else if (brightness == "OFF") {
+    brightness = 0
+  }
+
   val lightName = triggeringItemSplit.get(0)
   val source = triggeringItemSplit.get(1)
 
