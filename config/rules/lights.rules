@@ -31,12 +31,11 @@ then
       return;
     }
     if (brightness != 0) {
-      brightness = 66;
-  }
+      brightness = Integer.parseInt(transform("MAP", "time_of_day_to_brightness.map", vTimeOfDay.state.toString()))
+      logInfo("Lights", "Setting brightness to " + brightness + " because it is " + vTimeOfDay.state)
+    }
     logInfo("Lights", "Got a device command: " + brightness)
   }
-
-
 
   logInfo("Lights", "It was " + source + " for light " + lightName + " to " + brightness)
 
