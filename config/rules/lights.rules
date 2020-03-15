@@ -36,7 +36,7 @@ then
     if (brightness == proxy.state) {
       return;
     }
-    if (brightness != 0) {
+    if (proxy.state == 0 && brightness != 0) {
       brightness = Integer.parseInt(transform("MAP", "time_of_day_to_brightness.map", vTimeOfDay.state.toString()))
       logInfo("Lights", "Setting brightness to " + brightness + " because it is " + vTimeOfDay.state)
     }
