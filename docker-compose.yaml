@@ -31,6 +31,23 @@ services:
       - "traefik.http.routers.openhab.rule=Host(`openhab.home.alhome.uk`)"
       - "traefik.http.services.openhab.loadbalancer.server.port=8080"
 
+  mosquitto:
+    image: "eclipse-mosquitto:1.6.9"
+    restart: always
+    volumes:
+      - "./mosquitto/config:/mosquitto/config"
+      - "./mosquitto/data:/mosquitto/data"
+      - "./mosquitto/log:/mosquitto/log"
+    env_file: uidgid.env
+    environment:
+      USER_ID: 1001
+      GROUP_ID: 1001
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    networks:
+      - home
+
 networks:
   home:
     external:
