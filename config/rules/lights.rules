@@ -11,6 +11,8 @@ then
     brightness = 0
   }
 
+  logInfo("Lights", "Received command from " + triggeringItem + ": " + brightness)
+
   val lightName = triggeringItemSplit.get(0)
   val source = triggeringItemSplit.get(1)
 
@@ -23,9 +25,7 @@ then
   val ui = Lights.allMembers.findFirst[  p | p.name == lightName + "_UI" ]
   val rules = Lights.allMembers.findFirst[  p | p.name == lightName + "_Rules" ]
 
-  logInfo("Lights", "Triggered by " + triggeringItem +
-    "\nAiming for " + brightness +
-    "\nCurrently: " + 
+  logInfo("Lights", "Currently: " + 
     "\nProxy:  " + proxy.state + 
     "\nDevice: " + device.state + 
     "\nUI:     " + ui.state +
@@ -86,7 +86,12 @@ rule "All Lights"
 when
 	Item AllLights received command OFF
 then
-	AllLights_Rules.members.forEach[L |
-		L.sendCommand(0)
-	]
+  if (triggeringItem.name == "AllLights") {
+    logInfo("Lights", "Turning off all lights via rules")
+    AllLights_Rules.members.forEach[Switch L |
+      L.sendCommand(0)
+    ]
+  } else {
+    logInfo("Lights", "Not turning off the lights as the AllLights item wasn't touched")
+  }
 end

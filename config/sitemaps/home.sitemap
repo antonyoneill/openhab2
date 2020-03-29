@@ -35,8 +35,8 @@ sitemap home label="Our Home" {
   Frame label="Bedroom Lights" {
     Switch item=BedroomLight_UI icon="light" mappings=[0="Off", 5="V Low", 20="Low", 64="Mid", 100="High"]
   }
-  Frame label="All lights" visibility=[Lights==ON] {
-    Switch item=Lights visibility=[Lights==ON]
+  Frame label="All lights" visibility=[AllLights==ON] {
+    Switch item=AllLights visibility=[AllLights==ON]
   }
   Frame label="Rooms" {
     Text label="Front Room" icon="sofa" {
