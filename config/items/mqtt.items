@@ -1,1 +1,0 @@
-Switch Lounge_Lamp "Lounge Lamp" <light> (AllLights) { mqtt=">[broker:cmnd/lamp/POWER:command:*:default],<[brokwer:stat/lamp/POWER:state:default]" }

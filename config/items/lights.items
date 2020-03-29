@@ -24,3 +24,5 @@ Dimmer BedroomLight_UI "Bedroom [%d%%]" (Light_Proxy_Sync, BedroomLight, Lights_
 Dimmer BedroomLight_Rules               (Light_Proxy_Sync, BedroomLight, Lights_Rules, AllLights)
 
 Number FrontRoom_Dual_Light "All" <light> {autoupdate="false"}
+
+Switch Lounge_Lamp "Lounge Lamp" <light> (AllLights) { mqtt=">[broker:cmnd/lamp/POWER:command:*:default],<[brokwer:stat/lamp/POWER:state:default]" }
